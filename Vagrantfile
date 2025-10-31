@@ -14,16 +14,14 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "debian/bookworm64"
 
-  config.vm.define "mysql" do |mysql|
-    mysql.vm.hostname = "CrisAlmMysql"
-    mysql.vm.network "private_network", ip: "192.168.50.11" 
-    mysql.vm.provision "shell", path: "mysql_install.sh", args: ["192.168.50.10"] # IP de Apache
+  config.vm.define "crisalmmysql" do |crisalmmysql|
+    crisalmmysql.vm.network "private_network", ip: "192.168.50.11" 
+    crisalmmysql.vm.provision "shell", path: "mysql_install.sh", args: ["192.168.50.10"] # IP de Apache
   end
-  config.vm.define "apache" do |apache|
-    apache.vm.hostname = "CrisAlmApache"
-    apache.vm.network "private_network", ip: "192.168.50.10"
-    apache.vm.network "forwarded_port", guest: 80, host: 8080 
-    apache.vm.provision "shell", path: "apache_install.sh", args: ["192.168.50.11"] # IP de MySQL
+  config.vm.define "crisalmapache" do |crisalmapache|
+    crisalmapache.vm.network "private_network", ip: "192.168.50.10"
+    crisalmapache.vm.network "forwarded_port", guest: 80, host: 8080 
+    crisalmapache.vm.provision "shell", path: "apache_install.sh", args: ["192.168.50.11"] # IP de MySQL
   end
 
   # Disable automatic box update checking. If you disable this, then
