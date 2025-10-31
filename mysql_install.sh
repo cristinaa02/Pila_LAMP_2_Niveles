@@ -13,6 +13,9 @@ SQL_FILE="/vagrant/db/database.sql"
 sudo apt update
 sudo apt install mariadb-server -y
 
+# Eliminar la puerta de enlace de la NAT
+sudo ip route del default
+
 # Configurando MySQL para escuchar en 0.0.0.0.
 sudo sed -i "s/^bind-address.*127.0.0.1/bind-address = 0.0.0.0/g" /etc/mysql/mariadb.conf.d/50-server.cnf
 sudo systemctl restart mariadb
