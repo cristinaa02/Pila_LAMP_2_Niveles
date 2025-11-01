@@ -1,23 +1,23 @@
-# Pila_LAMP_2_Niveles
-Infraestructura en dos niveles, Apache y MySQL.
-¡Magnífico\! Has completado el ciclo: plan, código, y verificación.
+# Pila LAMP 2 Niveles: Aprovisionamiento con Vagrant
+Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisionadas mediante scripts con Vagrant.
 
-Si ya verificaste que los scripts funcionan y que la carpeta compartida está activa, solo queda un paso para asegurar una entrega perfecta: **el `README.md`**.
+## Índice
 
-Aquí tienes la estructura final y detallada del `README.md` que te propuse, cubriendo todos los puntos de la práctica.
+* [1. Arquitectura](#1-arquitectura)
+* [2. Requisitos Previos](#2-requisitos-previos)
+* [3. Instrucciones de Despliegue](#3-instrucciones-de-despliegue)
+* [4. Comprobación](#4-comprobación)
 
------
+---
 
-## 📝 `README.md`: Estructura Final (Versión de Entrega)
+### 1\. ⚙️ Arquitectura.
 
-### 1\. ⚙️ Arquitectura de Aprovisionamiento LAMP en Dos Niveles
+| Máquina | Función | IP |
+| --- | --- | --- |
+| **CrisAlmApache** | Servidor Web (Apache + PHP) | `192.168.50.10` |
+| **CrisAlmMysql** | Servidor de Base de Datos (MariaDB) | `192.168.50.11` |
 
-Este proyecto implementa una infraestructura LAMP distribuida en dos máquinas virtuales (VMs) aprovisionadas automáticamente mediante Vagrant y scripts Bash.
-
-| Máquina | Rol | IP Privada | Acceso Web |
-| :--- | :--- | :--- | :--- |
-| **CrisAlmApache** | Servidor Web (Apache + PHP) | `192.168.50.10` | `http://localhost:8080` (Desde el Host) |
-| **CrisAlmMysql** | Servidor de Base de Datos (MariaDB) | `192.168.50.11` | N/A (Aislada) |
+Se crean dos máquinas virtuales, una para el servidor Web y otra para el servidor de base de datos. El servidor Web tendrá dos adaptadores de red
 
 **Diagrama de Conexión:**
 
