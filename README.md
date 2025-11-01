@@ -57,9 +57,9 @@ El `Vagrantfile` es un archivo de configuración para el entorno virtualizado. D
 
 ### Configuración.
 
-![Vagrantfile box)](images/vagrant_box.png)
-![Vagrantfile mysql)](images/vagrant_mysql.png)
-![Vagrantfile apache)](images/vagrant_apache.png)
+![Vagrantfile box)](images/vagrantfile_box.png)
+![Vagrantfile mysql)](images/vagrantfile_mysql.png)
+![Vagrantfile apache)](images/vagrantfile_apache.png)
 
 
     
