@@ -5,7 +5,7 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
 
 * [1. Arquitectura](#1-arquitectura)
 * [2. Requisitos Previos](#2-requisitos-previos)
-* [3. Configuración del Vagrantfile](#3-diseño-y-configuración-del-vagrantfile)
+* [3. Configuración del Vagrantfile](#3-configuración-del-vagrantfile)
 * [4. Script de Aprovisionamiento: Mysql](#4-script-de-aprovisionamiento-mysql)
 * [5. Script de Aprovisionamiento: Apache](#5-script-de-aprovisionamiento-apache)
 
@@ -55,17 +55,30 @@ A continuación, se explicará cómo configurar el Vagrantfile y los dos scripts
 
 ### ¿Qué es el Vagrantfile?
 
-El `Vagrantfile` es un archivo de configuración para el entorno virtualizado. Define las máquinas virtuales (VMs), como la imagen base (`box`), las direcciones IP, los puertos, las carpetas compartidas, y las instrucciones de aprovisionamiento.
+El `Vagrantfile` es un archivo de configuración para el entorno virtualizado. Define los parámetros de las máquinas virtuales (VMs), como la imagen base (`box`), las direcciones IP, los puertos, las carpetas compartidas, y las instrucciones de aprovisionamiento.
 
 ### Configuración.
 
-En este caso, se utiliza una imagen del sistema operativo Debian (Debian 12).
+La configuración se basa en la imagen `debian/bookworm64` para ambas máquinas virtuales, asegurando la consistencia del entorno.
+
+Con `config.vm.box` se indica la imagen del sistema operativo; en este caso, Debian (Debian 12).
 
 ![Vagrantfile box)](images/vagrantfile_box.png)
 
+Para ambas máquinas, es necesario definir los siguientes parámetros que establecen la estructura de la arquitectura:
+
+* `config.vm.define`: Define el nombre que se usará para referirse a la VM en los comandos de Vagrant (por ejemplo: `vagrant up crisalmmysql`).
+* `vm.network "private_network", ip: ...`: Asigna una IP estática en una red privada.
+* `vm.provision "shell"`: Indica la ruta del script (`path`) que se ejecutará automáticamente al arrancar la máquina. Con `args` se le da a conocer la IP de la otra máquina.
 
 ![Vagrantfile mysql)](images/vagrantfile_mysql.png)
+
+En el caso del servidor web, es imprescindible mapear un puerto para que el usuario acceda a la aplicación. 
+* `vm.network "forwarded_port", guest: 80 , host: 8080`: Reenviar el tráfico del puerto de la máquina física (`host`) al puerto de la VM (`guest`).
+
 ![Vagrantfile apache)](images/vagrantfile_apache.png)
 
-
+-----
     
+## 4\. Script de Aprovisionamiento: Mysql.
+
