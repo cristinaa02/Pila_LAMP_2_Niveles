@@ -34,6 +34,7 @@ Se requiere tener instalados al menos los siguientes programas:
 
 La estructura de carpetas necesaria es la siguiente:
 
+```bash
 [Directorio]
 ├── Vagrantfile
 ├── mysql_install.sh
@@ -42,6 +43,7 @@ La estructura de carpetas necesaria es la siguiente:
 │   └── database.sql  (El esquema de tablas)
 └── src/
     └── index.php, config.php, etc. (El código de la aplicación)
+```
 
 Las carpetas db y src se pueden obtener de este mismo repositorio.
 
@@ -57,7 +59,11 @@ El `Vagrantfile` es un archivo de configuración para el entorno virtualizado. D
 
 ### Configuración.
 
+En este caso, se utiliza una imagen del sistema operativo Debian (Debian 12).
+
 ![Vagrantfile box)](images/vagrantfile_box.png)
+
+
 ![Vagrantfile mysql)](images/vagrantfile_mysql.png)
 ![Vagrantfile apache)](images/vagrantfile_apache.png)
 
