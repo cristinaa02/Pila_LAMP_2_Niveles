@@ -3,7 +3,7 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
 
 ## Índice
 
-* [1. Arquitectura y Conectividad](#1-arquitectura-y-conectividad)
+* [1. Arquitectura](#1-arquitectura)
 * [2. Requisitos Previos e Instalación](#2-requisitos-previos-e-instalación)
 * [3. Validación de Puntos de Control](#3-validación-de-puntos-de-control)
 * [4. Script de Aprovisionamiento: Mysql](#4-script-de-aprovisionamiento-mysql)
@@ -11,7 +11,7 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
 
 ---
 
-## 1\. ⚙️ Arquitectura.
+## 1\. Arquitectura.
 
 La implementación de la infraestructura distribuida en dos máquinas virtuales separa el servidor web de la base de datos, creando una capa de aislamiento esencial para la seguridad.
 
@@ -20,26 +20,11 @@ La implementación de la infraestructura distribuida en dos máquinas virtuales 
 | **CrisAlmApache** | Servidor Web (Apache + PHP) | `192.168.50.10` |
 | **CrisAlmMysql** | Servidor de Base de Datos (MariaDB) | `192.168.50.11` |
  
-El **servidor web** debe disponer de dos adaptadores de red: la **NAT**, que viene por defecto, y una **red interna** privada. Podrá comunicarse con el exterior y con la base de datos. El **servidor de base de datos** usará solo la **red interna**, garantizando que no tenga salida a internet. 
-
-```mermaid
-graph TD
-    A[Host Machine] -- Puerto 8080 --> B(CrisAlmApache: 192.168.50.10)
-    B -- Red Privada --> C(CrisAlmMysql: 192.168.50.11)
-```
+El **servidor web** debe disponer de dos adaptadores de red: la **NAT**, que viene por defecto, y una **red interna** privada. Podrá comunicarse con el exterior y con la base de datos. El **servidor de base de datos** usará solo la **red interna**, estando así protegido de conexiones externas. 
 
 -----
 
-## 2\. 🛡️ Aislamiento y Seguridad (CC1)
-
-El servidor de base de datos (`CrisAlmMysql`) está protegido de conexiones externas, manteniendo el principio del menor privilegio:
-
-  * **Aislamiento de Servicio (`bind-address`):** El script de MySQL modifica la configuración (`bind-address = 0.0.0.0`) para que el servicio escuche en la red privada.
-  * **Restricción por Host (`GRANT`):** El usuario de la aplicación (`user`) está limitado por IP a conectarse **únicamente** desde el servidor Apache (`192.168.50.10`). Cualquier intento de conexión desde el Host o una máquina externa fallará.
-
------
-
-## 3\. 🛠️ Configuración Automatizada (CC4)
+## 2\. 🛠️ Configuración Automatizada (CC4)
 
 La coherencia de la aplicación se garantiza mediante la automatización:
 
