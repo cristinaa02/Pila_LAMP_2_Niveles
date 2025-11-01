@@ -3,23 +3,24 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
 
 ## Índice
 
-* [1. Arquitectura](#1-arquitectura)
-* [2. Requisitos Previos](#2-requisitos-previos)
-* [3. Instrucciones de Despliegue](#3-instrucciones-de-despliegue)
-* [4. Comprobación](#4-comprobación)
+* [1. Arquitectura y Conectividad](#1-arquitectura-y-conectividad)
+* [2. Requisitos Previos e Instalación](#2-requisitos-previos-e-instalación)
+* [3. Validación de Puntos de Control](#3-validación-de-puntos-de-control)
+* [4. Script de Aprovisionamiento: Mysql](#4-script-de-aprovisionamiento-mysql)
+* [5. Script de Aprovisionamiento: Apache](#5-script-de-aprovisionamiento-apache)
 
 ---
 
-### 1\. ⚙️ Arquitectura.
+## 1\. ⚙️ Arquitectura.
+
+La implementación de la infraestructura distribuida en dos máquinas virtuales separa el servidor web de la base de datos, creando una capa de aislamiento esencial para la seguridad.
 
 | Máquina | Función | IP |
 | --- | --- | --- |
 | **CrisAlmApache** | Servidor Web (Apache + PHP) | `192.168.50.10` |
 | **CrisAlmMysql** | Servidor de Base de Datos (MariaDB) | `192.168.50.11` |
-
-Se crean dos máquinas virtuales, una para el servidor Web y otra para el servidor de base de datos. El servidor Web tendrá dos adaptadores de red
-
-**Diagrama de Conexión:**
+ 
+El **servidor web** debe disponer de dos adaptadores de red: la **NAT**, que viene por defecto, y una **red interna** privada. Podrá comunicarse con el exterior y con la base de datos. El **servidor de base de datos** usará solo la **red interna**, garantizando que no tenga salida a internet. 
 
 ```mermaid
 graph TD
@@ -29,7 +30,7 @@ graph TD
 
 -----
 
-### 2\. 🛡️ Aislamiento y Seguridad (CC1)
+## 2\. 🛡️ Aislamiento y Seguridad (CC1)
 
 El servidor de base de datos (`CrisAlmMysql`) está protegido de conexiones externas, manteniendo el principio del menor privilegio:
 
@@ -38,7 +39,7 @@ El servidor de base de datos (`CrisAlmMysql`) está protegido de conexiones exte
 
 -----
 
-### 3\. 🛠️ Configuración Automatizada (CC4)
+## 3\. 🛠️ Configuración Automatizada (CC4)
 
 La coherencia de la aplicación se garantiza mediante la automatización:
 
@@ -48,7 +49,7 @@ La coherencia de la aplicación se garantiza mediante la automatización:
 
 -----
 
-### 4\. 🚀 Instrucciones de Despliegue
+## 4\. 🚀 Instrucciones de Despliegue
 
 Para desplegar la infraestructura, ejecute estos comandos desde la carpeta raíz del repositorio:
 
@@ -64,8 +65,4 @@ Para desplegar la infraestructura, ejecute estos comandos desde la carpeta raíz
     Una vez finalizado el aprovisionamiento, la aplicación estará disponible en tu navegador en:
     `http://localhost:8080`
 
------
-
-¡Ya está\! Con ese `README.md`, el proyecto es indiscutible.
-
-¿Necesitas que te ayude a revisar el guion para el *screencast* (video de prueba) o tienes alguna otra duda final?
+    
