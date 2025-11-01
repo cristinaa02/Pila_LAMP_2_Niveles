@@ -4,8 +4,8 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
 ## Índice
 
 * [1. Arquitectura](#1-arquitectura)
-* [2. Requisitos Previos e Instalación](#2-requisitos-previos-e-instalación)
-* [3. Validación de Puntos de Control](#3-validación-de-puntos-de-control)
+* [2. Requisitos Previos](#2-requisitos-previos)
+* [3. Configuración del Vagrantfile](#3-diseño-y-configuración-del-vagrantfile)
 * [4. Script de Aprovisionamiento: Mysql](#4-script-de-aprovisionamiento-mysql)
 * [5. Script de Aprovisionamiento: Apache](#5-script-de-aprovisionamiento-apache)
 
@@ -24,30 +24,38 @@ El **servidor web** debe disponer de dos adaptadores de red: la **NAT**, que vie
 
 -----
 
-## 2\. 🛠️ Configuración Automatizada (CC4)
+## 2\. Requisitos Previos.
 
-La coherencia de la aplicación se garantiza mediante la automatización:
+Se requiere tener instalados al menos los siguientes programas:
 
-  * **Configuración de `config.php`:** El script de Apache utiliza `sed` para reemplazar automáticamente los *placeholders* en el archivo `config.php` con las credenciales y la IP del servidor MySQL (`192.168.50.11`).
-  * **Aprovisionamiento de la Base de Datos:** El script de MySQL crea la base de datos, el usuario, y realiza la importación del esquema de tablas desde `/vagrant/db/database.sql`.
-  * **Despliegue Limpio:** El código se copia de `/vagrant/src` al directorio web, y se eliminan los archivos conflictivos (`index.html` por defecto de Apache).
+* **VirtualBox** (Software de virtualización). Descargar [aquí](https://www.virtualbox.org/wiki/Downloads).
+* **Vagrant** (Herramienta para la creación y configuración de entornos de desarrollo virtualizados). Descargar [aquí](https://developer.hashicorp.com/vagrant/downloads).
+* (Opcional, pero recomendado) **Git** (Sistema de control de versiones). Descargar [aquí](https://git-scm.com/downloads).
+
+La estructura de carpetas necesaria es la siguiente:
+
+[Directorio]
+├── Vagrantfile
+├── mysql_install.sh
+├── apache_install.sh
+├── db/
+│   └── database.sql  (El esquema de tablas)
+└── src/
+    └── index.php, config.php, etc. (El código de la aplicación)
+
+Las carpetas db y src se pueden obtener de este mismo repositorio.
+
+A continuación, se explicará cómo configurar el Vagrantfile y los dos scripts de aprovisionamiento.
 
 -----
 
-## 4\. 🚀 Instrucciones de Despliegue
+## 3\. Configuración del Vagrantfile.
 
-Para desplegar la infraestructura, ejecute estos comandos desde la carpeta raíz del repositorio:
+### ¿Qué es el Vagrantfile?
 
-1.  **Aprovisionamiento Ordenado:** Es fundamental arrancar el servidor de la Base de Datos primero.
-    ```bash
-    # 1. Levantar y provisionar MySQL
-    vagrant up mysql
+El `Vagrantfile` es un archivo de configuración para el entorno virtualizado. Define las máquinas virtuales (VMs), como la imagen base (`box`), las direcciones IP, los puertos, las carpetas compartidas, y las instrucciones de aprovisionamiento.
 
-    # 2. Levantar y provisionar Apache
-    vagrant up apache
-    ```
-2.  **Acceso a la Aplicación:**
-    Una vez finalizado el aprovisionamiento, la aplicación estará disponible en tu navegador en:
-    `http://localhost:8080`
+### Configuración.
+
 
     
