@@ -6,8 +6,8 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
 * [1. Arquitectura](#1-arquitectura)
 * [2. Requisitos Previos](#2-requisitos-previos)
 * [3. Configuración del Vagrantfile](#3-configuración-del-vagrantfile)
-* [3.1. ¿Qué es el Vagrantfile?](#31-qué-es-el-vagrantfile)
-* [3.2. Configuración](#32-configuración)
+  * [¿Qué es el Vagrantfile?](#qué-es-el-vagrantfile)
+  * [Configuración](#configuración)
 * [4. Script de Aprovisionamiento: Mysql](#4-script-de-aprovisionamiento-mysql)
 * [5. Script de Aprovisionamiento: Apache](#5-script-de-aprovisionamiento-apache)
 
