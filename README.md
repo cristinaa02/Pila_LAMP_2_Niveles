@@ -21,9 +21,9 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
   * [5.3. Despliegue de Código](#53-despliegue-de-código)
   * [5.4. Permisos](#54-permisos)
   * [5.5. Configuración de la Aplicación](#55-configuración-de-la-aplicación)
-  * [5.6. Importación del archivo SQL](#56-importación-del-archivo-sql)
-* [6. Comprobación y Uso](#5-comprobación-y-uso)
-* [7. Conclusión](#5-conclusión)
+  * [5.6. Activación del Módulo `mod_rewrite`](#56-activación-del-módulo-mod_rewrite)
+* [6. Comprobación y Uso](#6-comprobación-y-uso)
+* [7. Conclusión](#7-conclusión)
 ---
 
 ## 1\. Arquitectura.
