@@ -6,8 +6,8 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
 * [1. Arquitectura](#1-arquitectura)
 * [2. Requisitos Previos](#2-requisitos-previos)
 * [3. Configuración del Vagrantfile](#3-configuración-del-vagrantfile)
-  * [¿Qué es el Vagrantfile?](#qué-es-el-vagrantfile)
-  * [Configuración](#configuración)
+  * [3.1 ¿Qué es el Vagrantfile?](#31-qué-es-el-vagrantfile)
+  * [3.2 Configuración](#32-configuración)
 * [4. Script de Aprovisionamiento: Mysql](#4-script-de-aprovisionamiento-mysql)
   * [Declaración de Variables](#declaración-de-variables)
   * [Actualización e Instalación de MariaDB](#actualización-e-instalación-de-mariadb)
@@ -16,7 +16,13 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
   * [Creación de la base de datos](#creación-de-la-base-de-datos)
   * [Importación del archivo SQL](#importación-del-archivo-sql)
 * [5. Script de Aprovisionamiento: Apache](#5-script-de-aprovisionamiento-apache)
-
+  * [Declaración de Variables](#declaración-de-variables)
+  * [Actualización e Instalación de Apache y Git](#actualización-e-instalación-de-apache-y-git)
+  * [Eliminación de la Puerta de Enlace NAT](#eliminación-de-la-puerta-de-enlace-nat)
+  * [Modificación del `bind-address`](#modificación-del-bind-address)
+  * [Creación de la base de datos](#creación-de-la-base-de-datos)
+  * [Importación del archivo SQL](#importación-del-archivo-sql)
+* [6. Conclusión](#5-conclusión)
 ---
 
 ## 1\. Arquitectura.
@@ -60,11 +66,11 @@ A continuación, se explicará cómo configurar el Vagrantfile y los dos scripts
 
 ## 3\. Configuración del Vagrantfile.
 
-### ¿Qué es el Vagrantfile?
+### 3.1\. ¿Qué es el Vagrantfile?
 
 El `Vagrantfile` es un archivo de configuración para el entorno virtualizado. Define los parámetros de las máquinas virtuales (VMs), como la imagen base (`box`), las direcciones IP, los puertos, las carpetas compartidas, y las instrucciones de aprovisionamiento.
 
-### Configuración.
+### 3.2\. Configuración.
 
 La configuración se basa en la imagen `debian/bookworm64` para ambas máquinas virtuales, asegurando la consistencia del entorno.
 
@@ -151,3 +157,15 @@ Con esto, el script de aprovisionamiento de MySQL estaría completo.
 -----
 
 ## 4\. Script de Aprovisionamiento: Apache.
+
+Este script se encarga de instalar y configurar el servidor web.
+
+### Declaración de Variables.
+
+Se definen variables para almacenar datos importantes que se repetirán en varias partes del script.
+
+![apache variables)](images/apache_variables.png)
+
+Igual que el script anterior, `DB_HOST="$1"` captura la IP del servidor de base de datos, pasada por `args` en el Vagrantfile.
+
+### Actualización e Instalación.
