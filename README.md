@@ -9,6 +9,12 @@ Infraestructura LAMP en dos máquinas virtuales (VMs), Apache y MySQL, aprovisio
   * [¿Qué es el Vagrantfile?](#qué-es-el-vagrantfile)
   * [Configuración](#configuración)
 * [4. Script de Aprovisionamiento: Mysql](#4-script-de-aprovisionamiento-mysql)
+  * [Declaración de Variables](#declaración-de-variables)
+  * [Actualización e Instalación de MariaDB](#actualización-e-instalación-de-mariadb)
+  * [Eliminación de la Puerta de Enlace NAT](#eliminación-de-la-puerta-de-enlace-nat)
+  * [Modificación del `bind-address`](#modificación-del-`bind-address`)
+  * [Creación de la base de datos](#creación-de-la-base-de-datos)
+  * [Importación del archivo SQL](#importación-del-archivo-sql)
 * [5. Script de Aprovisionamiento: Apache](#5-script-de-aprovisionamiento-apache)
 
 ---
