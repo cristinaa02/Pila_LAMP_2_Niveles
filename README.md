@@ -237,6 +237,8 @@ Una vez que ambas máquinas estén encendidas, para verificar el funcionamiento 
 
 <div align="center">
   <video src="images/comprobacion.mp4" controls width="500">
+    Tu navegador no soporta la etiqueta de video.
+  </video>
 </div>
 
 ## 7\. Conclusión.
