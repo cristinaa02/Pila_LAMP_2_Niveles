@@ -45,6 +45,7 @@ Se requiere tener instalados al menos los siguientes programas:
 
 * **VirtualBox** (Software de virtualización). Descargar [aquí](https://www.virtualbox.org/wiki/Downloads).
 * **Vagrant** (Herramienta para la creación y configuración de entornos de desarrollo virtualizados). Descargar [aquí](https://developer.hashicorp.com/vagrant/downloads).
+* **Git** (Opcional), para descargar este repositorio.
 
 La estructura de carpetas necesaria es la siguiente:
 
