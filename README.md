@@ -237,6 +237,8 @@ Una vez que ambas máquinas estén encendidas, para verificar el funcionamiento 
 
 [![Ver video](images/comprobacion.png)]([https://www.canva.com/design/XXXXXXXXXX](https://www.canva.com/design/DAG3qPiaAIQ/B4XqAfHJYfIndTl0Qlg2Nw/edit?utm_content=DAG3qPiaAIQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton))
 
+(Haz click en la imagen para ver el vídeo)
+
 ## 7\. Conclusión.
 
 El objetivo de este práctica era diseñar y automatizar una arquitectura de dos niveles segura. Se ha logrado mediante el uso de Vagrant, junto con los scripts de aprovisionamiento. 
