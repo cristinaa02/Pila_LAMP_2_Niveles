@@ -235,7 +235,9 @@ Una vez que ambas máquinas estén encendidas, para verificar el funcionamiento 
   1. En un navegador web, introducir la URL: `http://localhost:8080`. 
   2. Probar la aplicación. Introducir, visualizar y borrar datos para comprobar su correcto funcionamiento.
 
-![video)](images/comprobacion.mp4)
+<div align="center">
+  <video src="images/comprobacion.mp4" controls width="500">
+</div>
 
 ## 7\. Conclusión.
 
