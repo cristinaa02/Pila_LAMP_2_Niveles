@@ -235,6 +235,8 @@ Una vez que ambas máquinas estén encendidas, para verificar el funcionamiento 
   1. En un navegador web, introducir la URL: `http://localhost:8080`. 
   2. Probar la aplicación. Introducir, visualizar y borrar datos para comprobar su correcto funcionamiento.
 
+![video)](images/comprobacion.mp4)
+
 ## 7\. Conclusión.
 
 El objetivo de este práctica era diseñar y automatizar una arquitectura de dos niveles segura. Se ha logrado mediante el uso de Vagrant, junto con los scripts de aprovisionamiento. 
